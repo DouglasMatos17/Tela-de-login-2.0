@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,800;1,400&display=swap');
+
+
+
+*{
+    margin: 0;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    background-image: url(imagens/fundo.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+main{
+    background-color: rgb(0, 255, 255);
+    width: 100%;
+    height: 100vh;
+    max-width: 2000px;
+    background-color: rgba(88, 46, 155, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container{
+    display: flex;
+    position: relative;
+    min-width: 600px;
+    max-width: 900px;
+    border-radius: 0px 30px 0px 30px;
+    background-color: rgba(0, 0, 0, 0.11);
+    box-shadow: 10px 15px 30px rgba(0, 0, 0, 0.300);
+    margin: 25px;
+
+}
+
+.login{ 
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    width: 50%;
+}
+
+h1{ /*Para todos os h1 do cadastro e login*/
+    display: flex;
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+    justify-content: center;
+    font-weight: 800;
+}
+
+form label{ /*Para todos os label do cadastro e login*/
+    font-size: 1rem;
+}
+
+input{ /*Para todos os input do cadastro e login*/
+    height: 1.8rem;
+    width: 100%;
+    border: 0;
+    border-bottom: solid 3px black;
+    background-color: transparent;
+    outline: none; /*Retira a borda predefinida ao clicar no input*/
+    color: rgb(255, 255, 255);
+    margin-bottom: 15px;
+    transition: all .5s;
+}
+
+input::placeholder{
+    color: rgba(255, 255, 255, 0.4);
+    font-size: .9rem;
+}
+
+input:focus{
+    border-bottom: solid 3px rgba(148, 55, 255, 0.600);
+}
+
+.login .btnEfLogin{
+    margin: 20px 0px 30px 0px;
+    justify-content: center;
+    display: flex;
+}
+
+.btnEfLogin button{
+    width: 60%;
+    height: 2rem;
+    font-size: 1rem;
+    border-radius: 0px 10px 0px 10px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    background-color: rgba(137, 43, 226, 0.342);
+    color: white;
+    border: none;
+}
+
+.irCadastro{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.irCadastro button{
+    width: 75%;
+    height: 2rem;
+    font-size: 1rem;
+    border-radius: 0px 10px 0px 10px;
+    box-shadow: 3px 3px 10px rgba(37, 6, 151, 0.74);
+    cursor: pointer;
+    background-color: rgba(137, 43, 226, 0.342);
+    color: white;
+    border: none;
+}
+
+
+
+
+
+.cadastro{
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    width: 50%;
+}
+
+
+.cadastro .btnEfCadastro{
+    margin: 20px 0px 30px 0px;
+    justify-content: center;
+    display: flex;
+}
+
+.btnEfCadastro button{
+    width: 75%;
+    height: 2rem;
+    font-size: 1rem;
+    border-radius: 0px 10px 0px 10px;
+    box-shadow: 3px 3px 10px rgba(37, 6, 151, 0.74);
+    cursor: pointer;
+    background-color: rgba(137, 43, 226, 0.342);
+    color: white;
+    border: none;
+}
+
+.irLogin{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.irLogin button{
+    width: 60%;
+    height: 2rem;
+    font-size: 1rem;
+    border-radius: 0px 10px 0px 10px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    background-color: rgba(137, 43, 226, 0.342);
+    color: white;
+    border: none;
+}
+
+
+.ocultador{
+    background-color: brown;
+    display: flex;
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    border-radius: 0px 30px 0px 30px;
+    right: 0;
+    transition: all 2s ease-in-out;
+}

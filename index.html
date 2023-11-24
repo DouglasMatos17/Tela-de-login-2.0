@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <section class="container">
+            <div class="ocultador"></div> <!-- Esta div serve para fazer a animação de ocultação de das divs cadastro e log -->
+                <div class="login">
+                    <h1>Login</h1>
+                    <form>
+                        <label for="usuario">Usuario:</label>
+                        <input type="text" placeholder="Nome de usuario">
+                        <label for="password">Senha:</label>   
+                        <input type="password" placeholder="Digite sua senha">
+                    </form>
+
+                    <div class="btnEfLogin">
+                        <button>Efetuar Login</button>
+                    </div>
+
+                    <div class="irCadastro" >
+                        <p>Não é cadastrado?</p>
+                        <button id="btnIrCadastro">Cadastrar</button>
+                    </div>
+                </div> 
+        
+                <div class="cadastro">
+                    <h1>Cadastro</h1>
+                    <form>
+                        <label for="usuario">Usuario:</label>
+                        <input type="text" placeholder="Nome de usuario">
+
+                        <label for="email">Email:</label>
+                        <input type="password" placeholder="Digite seu email">
+
+                        <label for="password">Senha:</label>
+                        <input type="password" placeholder="Digite sua senha">
+
+                        <label for="password">Confirmar senha:</label>
+                        <input type="password" placeholder="Confirmar sua senha">
+                    </form>
+
+                    <div class="btnEfCadastro">
+                        <button>Cadastrar Usuario</button>
+                    </div>
+        
+                    <div class="irLogin">
+                        <p>Já é cadastrado?</p>
+                        <button id="btnIrLogin">Fazer Login</button>
+                    </div>
+                </div>
+        </section>
+    </main>
+</body>
+</html>
