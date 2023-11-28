@@ -9,7 +9,7 @@
 <body>
     <main>
         <section class="container">
-            <div class="ocultador"></div> <!-- Esta div serve para fazer a animação de ocultação de das divs cadastro e log -->
+            <div class="ocultador" id="ocultador"></div> <!-- Esta div serve para fazer a animação de ocultação de das divs cadastro e log -->
                 <div class="login">
                     <h1>Login</h1>
                     <form>
@@ -20,7 +20,7 @@
                     </form>
 
                     <div class="btnEfLogin">
-                        <button>Efetuar Login</button>
+                        <button id="btnEfLogin">Efetuar Login</button>
                     </div>
 
                     <div class="irCadastro" >
@@ -36,25 +36,30 @@
                         <input type="text" placeholder="Nome de usuario">
 
                         <label for="email">Email:</label>
-                        <input type="password" placeholder="Digite seu email">
+                        <input type="text" id="email" placeholder="Digite seu email">
 
                         <label for="password">Senha:</label>
-                        <input type="password" placeholder="Digite sua senha">
+                        <input type="password"  id="password" placeholder="Digite sua senha">
 
                         <label for="password">Confirmar senha:</label>
-                        <input type="password" placeholder="Confirmar sua senha">
+                        <input type="password" id="confirmPassword" placeholder="Confirmar sua senha">
                     </form>
 
                     <div class="btnEfCadastro">
-                        <button>Cadastrar Usuario</button>
+                        <button id="btnEfCadastro" >Cadastrar Usuario</button>
                     </div>
-        
+                    
+                    <div id="errorMessage" class="message error-message"></div>
+                    <div id="successMessage" class="message success-message"></div>
+                    
                     <div class="irLogin">
                         <p>Já é cadastrado?</p>
                         <button id="btnIrLogin">Fazer Login</button>
                     </div>
+
                 </div>
         </section>
+        <script src="script.js"></script>
     </main>
 </body>
 </html>
