@@ -52,6 +52,7 @@ main{
     flex-direction: column;
     padding: 50px;
     width: 50%;
+    align-self: center;
 }
 
 h1{ /*Para todos os h1 do cadastro e login*/
@@ -180,6 +181,8 @@ input:focus{
 .ocultador{
     background-color: var(--cor-2);
     display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 50%;
     height: 100%;
     position: absolute;
@@ -188,9 +191,70 @@ input:focus{
     transition: all .8s ease-in;
 }
 
+.containerFundo{
+    height: 100%;
+    width: 100%;
+    position: relative;
+    background-image: url(imagens/folhas.png);
+    opacity: .4;
+    background-position: -100px;
+    background-size: cover;
+}
+
+.containerOcul{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.containerOcul .logo{ /*Isso foi feito para que o container abaixo e todo os outros não ficassem com um espaço, pois como dentro deste container tem uma tranform jogando a imagem acima, todos os coutainer a baixo teriam der ter um tranforme tbm, isso e resolvido reduzindo i tamanho da caixa que contem a img, logo a imagem tranborda para fora da caixa sem colidir com outros containers*/
+    height: 230px;
+}
+
+.ocultador .containerFundo img{
+    display: flex;
+    width: 700px;
+    transform: translateX(-80px);
+    opacity: .3;
+}
+
+.ocultador .containerOcul img{
+    display: flex;
+    width: 300px;
+    transform: translateY(-80px);
+    animation: flutuacao 4s infinite;
+}
+
+.containerOcul .conteudo{
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    text-align: center;
+    gap: 20px;
+}
+
+@keyframes flutuacao {
+    0%, 100% {
+        transform: translateY(-80);
+    }
+    50% {
+    transform: translateY(-105px);
+    }
+}
+
 .show{
     right: 50%;
 }
+
+
+
+
+
+
+
+
+
 
 
 .message {
@@ -206,6 +270,13 @@ input:focus{
     text-align: center;
     color: rgb(123, 179, 123);
 }
+
+
+
+
+
+
+
 
 
 @media (max-width: 600px){
