@@ -7,14 +7,21 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="alerta" id="alerta">
+        <div class="containerA">
+            <h1>Alerta</h1>
+            <h2>Seu cadastro tem as seguites informações erradas:</h2>
+            <div class="containerErros">
+                <p id="alertaLogin">Login só pode ter 8 caracteres e deve ter apenas letras e numeros.</p>
+                <p id="alertaEmail">Confira novamente se o email digitado esta correto e com uso de @ e " . "(ponto).</p>
+                <p id="alertaSenha">A senha presica conter no minimo 6 caracteres, e deve conter pelo menos 1 numero.</p>
+                <p id="alertaConfirm">As senhas deve estar iguais "Senha" e "Confirmação de senhas".</p>
+            </div>
+            <button class="btnAlerta" onclick="hideAlert()">Fechar</button>
+        </div>
+    </div>
     <main>
         <section class="container">
-
-
-
-
-
-
             <div class="ocultador" id="ocultador">
 
                 <div class="containerFundo"></div>
@@ -30,18 +37,8 @@
                     </div>
                     
                 </div>
-
             </div> <!-- Esta div serve para fazer a animação de ocultação de das divs cadastro e log -->
-
-
-
-
-
-
-
-
-
-                <div class="login">
+            <div class="login" id="loginDiv">
                     <h1>Login</h1>
                     <form>
                         <label for="usuario">Usuario:</label>
@@ -58,15 +55,12 @@
                         <p>Não é cadastrado?</p>
                         <button id="btnIrCadastro">Cadastrar</button>
                     </div>
-                </div> 
-        
-
-
-                <div class="cadastro">
+            </div> 
+            <div class="cadastro" id="cadastroDiv">
                     <h1>Cadastro</h1>
                     <form>
                         <label for="usuario">Usuario:</label>
-                        <input type="text" placeholder="Nome de usuario">
+                        <input type="text" id="user" placeholder="Nome de usuario">
 
                         <label for="email">Email:</label>
                         <input type="text" id="email" placeholder="Digite seu email">
@@ -90,7 +84,7 @@
                         <button id="btnIrLogin">Fazer Login</button>
                     </div>
 
-                </div>
+            </div>
         </section>
         <script src="script.js"></script>
     </main>
