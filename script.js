@@ -8,7 +8,6 @@ let btnIrLogin = document.getElementById('btnIrLogin')
 let ocultador = document.getElementById('ocultador')
 let loginDiv = document.getElementById('loginDiv')
 let cadastroDiv = document.getElementById('cadastroDiv')
-let alertaDiv = document.getElementById('alerta')
 
 btnIrCadastro.addEventListener('click', function() {
     hideLogin()
@@ -36,7 +35,7 @@ function showLogin() {
     setTimeout(function () {
         loginDiv.style.opacity = '100%'
     }, 800)
-
+    
 }
 
 
@@ -46,6 +45,9 @@ let alertaLogin = document.getElementById('alertaLogin')
 let alertaEmail = document.getElementById('alertaEmail')
 let alertaSenha = document.getElementById('alertaSenha')
 let alertaConfirm = document.getElementById('alertaConfirm')
+let alertaDiv = document.getElementById('alerta')
+let containerA = document.getElementById('containerA')
+let containerC = document.getElementById('containerC')
 
 function showAlert(){
     
@@ -85,6 +87,25 @@ function hideAlert(){
         document.getElementById(id).style.display = 'none';
     });
 }
+
+function alertOk(){
+    containerA.style.display = 'none'
+    containerC.style.display = 'flex'
+    alertaDiv.style.display = 'flex'
+    setTimeout(function () {
+        alertaDiv.style.opacity = '100%'
+    }, 10)
+}
+
+function hideAlertOk(){
+    setTimeout(function () {
+        alertaDiv.style.opacity = '0%'
+    }, 400)
+    containerA.style.display = 'flex'
+    containerC.style.display = 'none'
+    alertaDiv.style.display = 'none'
+}
+
 
 
 // Validação do Cadastro
@@ -178,5 +199,7 @@ function verificarErros() {
     // Verifica se alguma das condições resultou em false
     if (!userValid || !emailValid || !senhaValid || !senhaConfValid) {
         showAlert();
+    } else {
+        alertOk()
     }
 }

@@ -28,6 +28,7 @@ main{
     width: 100%;
     height: 100vh;
     max-width: 2000px;
+    min-height: 800px;
     background-color: var(--cor-fundoMain);
     display: flex;
     justify-content: center;
@@ -313,17 +314,52 @@ input:focus{
     }
 }
 
+.alerta{
+    .containerC{
+        display: none;
+        flex-direction: column;
+        padding: 30px;
+        gap: 15px;
+        width: 450px;
+        height: 300px;
+        align-items: center;
+        background-color: var(--cor-fonte);
+        border-radius: 15px;
+        color: rgb(5, 172, 61);
+        z-index: 11;
+    }
+}
 
 
 
-
-@media (max-width: 600px){
+@media (max-width: 650px){
+    main{
+        height: auto;
+    }
     .container{
         flex-direction: column;
+        max-width: 85vw;
+        min-width: 280px;
+        margin-top: 105px;
     }
 
+    .cadastro{
+        padding-top: 150px;
+        padding-left: 10%;
+        padding-right: 10%;
+        align-self: center;
+
+    }
     .ocultador{
         width: 100%;
         height: 50%;
+        bottom: 0;
     }
+
+    .hide{
+        right: 0;
+        bottom: 50%;
+    }
+
+
 }
