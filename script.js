@@ -223,6 +223,7 @@ function CadastroOk(){
 
 
 //Chave Banco de dados
+function addBancoD(){
 
 const firebaseConfig = {
     apiKey: "AIzaSyDz4EXt3l7EOpopuhhlNZ6ZsI0J5k0sTbk",
@@ -239,7 +240,6 @@ const app = initializeApp(firebaseConfig);
 
 
 
-function addBancoD(){
 
 // Referência para o nó "usuarios" no banco de dados
 let usuariosRef = firebase.database().ref("usuarios");
