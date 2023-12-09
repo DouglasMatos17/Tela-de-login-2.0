@@ -1,5 +1,5 @@
-import { initializeApp } from "firebase/app";
-import { getDatabase, ref, push } from 'firebase/database';
+const { initializeApp } = require('firebase/app');
+const { getDatabase, ref, push } = require('firebase/database');
 
 // Ao iniciar uma avaciação dos conchecimentos utilizados nesses projeto, atente-se que os comentarios no mesmo e a forma como foi feito serve alem de projeto, mas como catalogo de conhecimento sendo que em muitos casos reviso como pratiguei em meus projetos antigos para aprimorar meur projetos atuais.
 
