@@ -142,7 +142,7 @@ function validateLogin() {
     let userRegex = /^[a-zA-Z0-9]+$/;
     let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
     let passwordRegex = /^(?=.*[0-9])(?=.*[a-zA-Z])[a-zA-Z0-9]{6,}$/;
-
+    
     if(!userRegex.test(user)) {
         userValid = false
     }else{
@@ -154,7 +154,7 @@ function validateLogin() {
     }else{
         emailValid = true
     }
-
+    
     if (!passwordRegex.test(password)) {
         senhaValid = false
     }else{
@@ -165,7 +165,7 @@ function validateLogin() {
 function validatePasswordMatch(senhaValid) {
     let password = document.getElementById('password').value;
     let confirmPassword = document.getElementById('confirmPassword').value;
-
+    
     if (password !== confirmPassword) {
         senhaConfValid = false
     } else{
@@ -175,25 +175,25 @@ function validatePasswordMatch(senhaValid) {
 
 
 function mensagem(){
-
+    
     if(userValid === false) {
         console.log ('User Incorreto')
     } else if(userValid === true){
         console.log ('User Correto')
     }
-
+    
     if(emailValid === false){
         console.log('Email Incorreto')
     } else if(emailValid === true){
         console.log('Email Correto')
     }
-
+    
     if (senhaValid === false){
         console.log('Senha Incorreta')
     } else if(senhaValid === true){
         console.log('Senha Correta')
     }
-
+    
     if(senhaConfValid === false){
         console.log('As senhas não são iguais')
     }else if(senhaConfValid === true){
@@ -209,22 +209,27 @@ function verificarErros() {
     } else {
         alertOk()
         CadastroOk()
-}}
+    }
+}
 
 function CadastroOk(){
     usuario.login = user
     usuario.email = email
     usuario.senha = password
-
+        
     addBancoD()
 }
 
-
-
-
 //Chave Banco de dados
+import { initializeApp } from "firebase/app";
+
 function addBancoD(){
 
+// Import the functions you need from the SDKs you need
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
 const firebaseConfig = {
     apiKey: "AIzaSyDz4EXt3l7EOpopuhhlNZ6ZsI0J5k0sTbk",
     authDomain: "tela-de-login--2.firebaseapp.com",
@@ -235,10 +240,9 @@ const firebaseConfig = {
     appId: "1:224401762261:web:c4cd0fd0017b4ba5a07f5c"
 };
 
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
-
 
 
 // Referência para o nó "usuarios" no banco de dados
