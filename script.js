@@ -113,12 +113,19 @@ function hideAlertOk(){
 // A forma de validação simples que encontrei em meu estudos foi criando uma variavel especificando os caracteres que não poderiam ser utilizados e colocando todos em uma string, e utilizando o propriedade do js .test para efetuar uma validação simples para ver se o conteudo digitado estava com os caracteres corretos. Vale resaltar que este metodo é apenas para simular da funcionabilidade do projeto, para projetos reais e robustos necessita de bibliotecas de validação de formulários mais avançadas ou implementar verificações adicionais no lado do servidor para garantir a segurança.
 
 
+
+
 let btnEfCadastro = document.getElementById('btnEfCadastro')
 let btnEfLogin = document.getElementById('btnEfLogin')
 let userValid = null
 let emailValid = null
 let senhaValid = null
 let senhaConfValid = null
+let usuario = {
+    login: 'nomeDeUsuario',
+    email: 'exemplo@email.com',
+    senha: 'senha123'
+};
 
 btnEfCadastro.addEventListener('click', function(){
     validateLogin()
@@ -128,9 +135,9 @@ btnEfCadastro.addEventListener('click', function(){
 
 
 function validateLogin() {
+    let user = document.getElementById('user').value;
     let email = document.getElementById('email').value;
     let password = document.getElementById('password').value;
-    let user = document.getElementById('user').value;
     
     let userRegex = /^[a-zA-Z0-9]+$/;
     let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
@@ -201,5 +208,48 @@ function verificarErros() {
         showAlert();
     } else {
         alertOk()
-    }
+        CadastroOk()
+}}
+
+function CadastroOk(){
+    usuario.login = user
+    usuario.email = email
+    usuario.senha = password
+
+    addBancoD()
+}
+
+
+
+
+//Chave Banco de dados
+
+const firebaseConfig = {
+    apiKey: "AIzaSyDz4EXt3l7EOpopuhhlNZ6ZsI0J5k0sTbk",
+    authDomain: "tela-de-login--2.firebaseapp.com",
+    databaseURL: "https://tela-de-login--2-default-rtdb.firebaseio.com",
+    projectId: "tela-de-login--2",
+    storageBucket: "tela-de-login--2.appspot.com",
+    messagingSenderId: "224401762261",
+    appId: "1:224401762261:web:c4cd0fd0017b4ba5a07f5c"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+
+
+
+function addBancoD(){
+
+// Referência para o nó "usuarios" no banco de dados
+let usuariosRef = firebase.database().ref("usuarios");
+
+// Adiciona o usuário ao banco de dados
+usuariosRef.push(usuario)
+    .then(() => {
+        console.log("Usuário cadastrado com sucesso!");
+    })
+    .catch((error) => {
+        console.error("Erro ao cadastrar usuário:", error);
+    });
 }
