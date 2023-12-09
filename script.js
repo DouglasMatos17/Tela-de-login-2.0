@@ -1,7 +1,3 @@
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js';
-import { getDatabase, ref, push } from 'https://www.gstatic.com/firebasejs/9.4.0/firebase-database.js';
-
-
 // Ao iniciar uma avaciação dos conchecimentos utilizados nesses projeto, atente-se que os comentarios no mesmo e a forma como foi feito serve alem de projeto, mas como catalogo de conhecimento sendo que em muitos casos reviso como pratiguei em meus projetos antigos para aprimorar meur projetos atuais.
 
 
@@ -227,26 +223,6 @@ function CadastroOk(){
 //Chave Banco de dados
 
 function addBancoD(){
-
-// Import the functions you need from the SDKs you need
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-const firebaseConfig = {
-    apiKey: "AIzaSyDz4EXt3l7EOpopuhhlNZ6ZsI0J5k0sTbk",
-    authDomain: "tela-de-login--2.firebaseapp.com",
-    databaseURL: "https://tela-de-login--2-default-rtdb.firebaseio.com",
-    projectId: "tela-de-login--2",
-    storageBucket: "tela-de-login--2.appspot.com",
-    messagingSenderId: "224401762261",
-    appId: "1:224401762261:web:c4cd0fd0017b4ba5a07f5c"
-};
-
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-
 
 // Referência para o nó "usuarios" no banco de dados
 let usuariosRef = firebase.database().ref("usuarios");
