@@ -213,6 +213,10 @@ function verificarErros() {
 }
 
 function CadastroOk() {
+    const user = document.getElementById('user').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
     usuario.login = user;
     usuario.email = email;
     usuario.senha = password;
