@@ -213,10 +213,6 @@ function verificarErros() {
 }
 
 function CadastroOk() {
-    const user = document.getElementById('user').value;
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-
     usuario.login = user;
     usuario.email = email;
     usuario.senha = password;
@@ -235,17 +231,17 @@ function CadastroOk() {
 //Chave Banco de dados
 
 function addBancoD() {
-    return new Promise((resolve, reject) => {
-        const usuariosRef = firebase.database().ref("usuario");
+    
+    const usuariosRef = firebase.database().ref("usuario");
 
-        usuariosRef.push(usuario)
-            .then(() => {
-                console.log("Usuário cadastrado com sucesso!");
-                resolve();
-            })
-            .catch((error) => {
-                console.error("Erro ao cadastrar usuário:", error);
-                reject(error);
-            });
-    });
+    usuariosRef.push(usuario)
+        .then(() => {
+            console.log("Usuário cadastrado com sucesso!");
+            resolve();
+        })
+        .catch((error) => {
+            console.error("Erro ao cadastrar usuário:", error);
+            reject(error);
+        });
+;
 }
