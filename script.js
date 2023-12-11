@@ -230,7 +230,7 @@ function CadastroOk() {
 
 function addBancoD() {
     return new Promise((resolve, reject) => {
-        const usuariosRef = firebase.database().ref("usuarios");
+        const usuariosRef = firebase.database().ref("usuario");
 
         usuariosRef.push(usuario)
             .then(() => {
