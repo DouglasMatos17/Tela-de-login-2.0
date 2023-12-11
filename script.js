@@ -223,7 +223,7 @@ function CadastroOk(){
 //Chave Banco de dados
 
 function addBancoD(){
-
+    
 // Referência para o nó "usuarios" no banco de dados
 let usuariosRef = firebase.database().ref("usuarios");
 
