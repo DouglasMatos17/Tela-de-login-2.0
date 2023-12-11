@@ -212,27 +212,34 @@ function verificarErros() {
     }
 }
 
-function CadastroOk(){
-    usuario.login = user
-    usuario.email = email
-    usuario.senha = password
-        
+function CadastroOk() {
+    usuario.login = user;
+    usuario.email = email;
+    usuario.senha = password;
+
     addBancoD()
+        .then(() => {
+            // Outras ações que você deseja realizar após o cadastro
+        })
+        .catch((error) => {
+            // Tratar erros, se necessário
+        });
 }
 
 //Chave Banco de dados
 
-function addBancoD(){
-    
-// Referência para o nó "usuarios" no banco de dados
-let usuariosRef = firebase.database().ref("usuarios");
+function addBancoD() {
+    return new Promise((resolve, reject) => {
+        const usuariosRef = firebase.database().ref("usuarios");
 
-// Adiciona o usuário ao banco de dados
-usuariosRef.push(usuario)
-    .then(() => {
-        console.log("Usuário cadastrado com sucesso!");
-    })
-    .catch((error) => {
-        console.error("Erro ao cadastrar usuário:", error);
+        usuariosRef.push(usuario)
+            .then(() => {
+                console.log("Usuário cadastrado com sucesso!");
+                resolve();
+            })
+            .catch((error) => {
+                console.error("Erro ao cadastrar usuário:", error);
+                reject(error);
+            });
     });
 }
