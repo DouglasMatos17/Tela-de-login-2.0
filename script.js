@@ -223,9 +223,11 @@ function CadastroOk() {
 
     addBancoD()
         .then(() => {
+            console.log("CadastroOk - Promessa resolvida com sucesso");
             // Outras ações que você deseja realizar após o cadastro
         })
         .catch((error) => {
+            console.error("CadastroOk - Erro ao cadastrar usuário:", error);
             // Tratar erros, se necessário
         });
 }
