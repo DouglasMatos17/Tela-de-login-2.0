@@ -232,7 +232,31 @@ function CadastroOk() {
         });
 }
 
+
+
+
+
+
+
 //Chave Banco de dados
+
+
+import { initializeApp } from "firebase/app";
+import { getDatabase } from "firebase/database";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyDz4EXt3l7EOpopuhhlNZ6ZsI0J5k0sTbk",
+    authDomain: "tela-de-login--2.firebaseapp.com",
+    databaseURL: "https://tela-de-login--2-default-rtdb.firebaseio.com",
+    projectId: "tela-de-login--2",
+    storageBucket: "tela-de-login--2.appspot.com",
+    messagingSenderId: "224401762261",
+    appId: "1:224401762261:web:c4cd0fd0017b4ba5a07f5c"
+};
+
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
+
 
 function addBancoD() {
 
