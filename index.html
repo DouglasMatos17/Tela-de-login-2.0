@@ -17,13 +17,13 @@
                 <p id="alertaSenha">A senha presica conter no minimo 6 caracteres, e deve conter pelo menos 1 numero.</p>
                 <p id="alertaConfirm">As senhas deve estar iguais "Senha" e "Confirmação de senhas".</p>
             </div>
-            <button class="btnAlerta" onclick="hideAlert()">Fechar</button>
+            <button class="btnAlerta" id="btnAlerta">Fechar</button>
         </div>
         
         <div class="containerC" id="containerC">
             <h1>Sucesso</h1>
             <p id="loginConcluido">Cadastro concluido!</p>
-            <button class="btnAlerta" onclick="hideAlertOk()">Fechar</button>
+            <button class="btnAlerta" id="btnAlertaOK">Fechar</button>
         </div>
     </div>
     <main>
@@ -91,7 +91,7 @@
                     </div>
             </div>
     </main>
+<script type="module" src="script/script.js"></script>
 <script type="module" src="script/scriptBD.js"></script>
-<script src="script/script.js"></script>
 </body>
 </html>

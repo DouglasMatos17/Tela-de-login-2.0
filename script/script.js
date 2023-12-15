@@ -73,6 +73,12 @@ function showAlert(){
     }, 10)
 }
 
+let btnHideAlert = document.getElementById('btnAlerta')
+
+btnHideAlert.addEventListener('click', function() {
+    hideAlert()
+    console.log('Alerta de fechado')
+});
 
 function hideAlert(){
     alertaDiv.style.opacity = '0%'
@@ -97,6 +103,15 @@ function alertOk(){
     }, 10)
 }
 
+
+
+let btnHideAlertOK = document.getElementById('btnAlertaOK')
+
+btnHideAlertOK.addEventListener('click', function() {
+    hideAlertOk()
+    console.log('Alerta de OK fechado')
+});
+
 function hideAlertOk(){
     setTimeout(function () {
         alertaDiv.style.opacity = '0%'
@@ -108,24 +123,36 @@ function hideAlertOk(){
 
 
 
+
+
+
 // Validação do Cadastro
 
 // A forma de validação simples que encontrei em meu estudos foi criando uma variavel especificando os caracteres que não poderiam ser utilizados e colocando todos em uma string, e utilizando o propriedade do js .test para efetuar uma validação simples para ver se o conteudo digitado estava com os caracteres corretos. Vale resaltar que este metodo é apenas para simular da funcionabilidade do projeto, para projetos reais e robustos necessita de bibliotecas de validação de formulários mais avançadas ou implementar verificações adicionais no lado do servidor para garantir a segurança.
 
+let user = null
+let email = null
+let password = null
 
-
-
-let btnEfCadastro = document.getElementById('btnEfCadastro')
-let btnEfLogin = document.getElementById('btnEfLogin')
-let userValid = null
-let emailValid = null
-let senhaValid = null
-let senhaConfValid = null
+// Objeto final
 let usuario = {
-    login: 'nomeDeUsuario',
-    email: 'exemplo@email.com',
-    senha: 'senha123'
+    login: '',
+    email: '',
+    senha: ''
 };
+
+// Variaveis de situação das validações (true ou false)
+let userValid = ''
+let emailValid = ''
+let senhaValid = ''
+let senhaConfValid = ''
+
+
+
+let btnEfLogin = document.getElementById('btnEfLogin')
+let btnEfCadastro = document.getElementById('btnEfCadastro')
+
+
 
 btnEfCadastro.addEventListener('click', function(){
     validateLogin()
@@ -134,21 +161,22 @@ btnEfCadastro.addEventListener('click', function(){
 })
 
 
+
 function validateLogin() {
-    let user = document.getElementById('user').value;
-    let email = document.getElementById('email').value;
-    let password = document.getElementById('password').value;
+    user = document.getElementById('user').value;
+    email = document.getElementById('email').value;
+    password = document.getElementById('password').value;
     
-    let userRegex = /^[a-zA-Z0-9]+$/;
-    let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
-    let passwordRegex = /^(?=.*[0-9])(?=.*[a-zA-Z])[a-zA-Z0-9]{6,}$/;
+    const userRegex = /^[a-zA-Z0-9]+$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
+    const passwordRegex = /^(?=.*[0-9])(?=.*[a-zA-Z])[a-zA-Z0-9]{6,}$/;
     
     if(!userRegex.test(user)) {
         userValid = false
     }else{
         userValid = true
     }
-
+    
     if (!emailRegex.test(email)) { 
         emailValid = false
     }else{
@@ -159,16 +187,17 @@ function validateLogin() {
         senhaValid = false
     }else{
         senhaValid = true
-    }
+    }    
+    //Essas informações são tratadas pela manipulação de DOM para exibir a mensagem personalizada informando apenas quais são falsas para o usuario. assim podendo rever seu cadastro de forma dinamica sabendo exatamente qual informação esta errada. Tirei esta ideia do meu uso pessoal em outra plataformas onde não me informava onde tinha errado ao cadastrar e quis trazer este recurso para o meu projeto.
 }
 
-function validatePasswordMatch(senhaValid) {
-    let password = document.getElementById('password').value;
+function validatePasswordMatch() {
+    password = document.getElementById('password').value;
     let confirmPassword = document.getElementById('confirmPassword').value;
-    
+
     if (password !== confirmPassword) {
         senhaConfValid = false
-    } else{
+    }else{
         senhaConfValid = true
     }
 }
@@ -205,30 +234,19 @@ function mensagem(){
 function verificarErros() {
     // Verifica se alguma das condições resultou em false
     if (!userValid || !emailValid || !senhaValid || !senhaConfValid) {
-        showAlert();
+        showAlert(); //Manipulação de DOM do alerta de erro no cadastro
     } else {
-        alertOk()
+        alertOk() //Manipulação de DOM do alerta de OK
         CadastroOk()
+        console.log ('Enviando para o banco de dados') //fim do script.js
+        iniciarBG() // função que inicia o bando de dados
     }
 }
 
 function CadastroOk() {
-    const user = document.getElementById('user').value;
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-
     usuario.login = user;
     usuario.email = email;
     usuario.senha = password;
-
-    addBancoD()
-        .then(() => {
-            console.log("CadastroOk - Promessa resolvida com sucesso");
-            // Outras ações que você deseja realizar após o cadastro
-        })
-        .catch((error) => {
-            console.error("CadastroOk - Erro ao cadastrar usuário:", error);
-            // Tratar erros, se necessário
-        });
 }
-
+import { iniciarBG } from './scriptBD.js';
+export { usuario }; //Exportando para que o objeto usuario possa ser tratado no arquivo ScriptBD (Banco de dados) utilizando a ideia de produção por etapas, pois cada parte é tratada em um arquivo destinado ao mesmo.
