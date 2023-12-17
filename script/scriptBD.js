@@ -1,7 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { onValue } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
-import { getDatabase ,set,get,ref } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+import { getDatabase, ref, set, get } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
+import { onValue } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -17,29 +17,81 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app)
+const usersRef = ref(db, "users");
 
 
 
 // Manipulação de dados
 
-//imports
+//Imports e Exports
 import { usuario } from './script.js';
-export { iniciarBG } // Gatilho para iniciar procedimentod no banco de dados
+export { iniciarBG } // Gatilho para iniciar procedimentos no banco de dados
+
+let userID
 
 function iniciarBG() {
-    console.log('banco de dados iniciado')
+    console.log('Banco de dados iniciado')
+    console.log(usuario)
+    buscarlista()
 }
 
-const usersRef = ref(db, 'users'); // Usando a referência correta
+function buscarlista(){
+get(usersRef)
+    .then((snapshot) => {
+    console.log("Snapshot:", snapshot.val())
+    
+    if (snapshot.exists()) {
+        const data = snapshot.val();
+        const numberOfUsers = data ? Object.keys(data).length : 0;
+        criadorID(numberOfUsers)
+    } else {
+        console.log("Erro ao acessar usuarios no banco de dados");
+    }
+    })
+    .catch((error) => {
+    console.error("Erro ao obter dados da coleção 'users':", error);
+    });
+}
+
+
+function criadorID(numberOfUsers){
+    
+    numberOfUsers += 1
+
+    userID = String(numberOfUsers).padStart(6, '0');
+    console.log(userID)
+    console.log (usuario)
+    const nomeUser = usuario.login
+    const emailUser = usuario.email
+    const senhaUser = usuario.senha
+    criadorUser(userID, nomeUser, emailUser, senhaUser)
+}
+
+
+function criadorUser(userID, nomeUser, emailUser, senhaUser) {
+    set(ref(db, 'users/' + userID), {
+        name: nomeUser,
+        email: emailUser,
+        senha: senhaUser
+    });
+}
+
+
+// Restante do seu código...
 
 
 
 
+//fim do codigo copiado
 
+
+
+
+/*
 
 //Leitura de dados dos nos
 
-
+const usersRef = ref(db, "users");
 // Lê os dados do nó 'users'
 get(usersRef)
 
@@ -57,14 +109,15 @@ get(usersRef)
 console.error("Erro ao ler dados do nó 'users':", error);
 });
 
-function writeUserData(userID, name, email) {
+function writeUserData(userID, name, email, senha) {
 set(ref(db, 'users/' + userID), {
 name: name,
-email: email
+email: email,
+senha: senha
 });
 }
 
-writeUserData(1, "Douglas", "dg.7@gmail.com");
+writeUserData(2, "Douglas", "dg.7@gmail.com", "123564a");
 
 function readData() {
 const userRef = ref(db, 'users');
