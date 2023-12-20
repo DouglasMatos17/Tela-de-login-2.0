@@ -20,6 +20,7 @@ btnIrLogin.addEventListener('click', function() {
 });
 
 
+
 function hideLogin() {
     loginDiv.style.opacity = '0%'
     ocultador.classList.add('hide')
@@ -152,6 +153,9 @@ let senhaConfValid = ''
 let btnEfLogin = document.getElementById('btnEfLogin')
 let btnEfCadastro = document.getElementById('btnEfCadastro')
 
+btnEfLogin.addEventListener('click', () => { // Usando arronw para treinar usos diferentes
+    efetuarLogin()
+})
 
 
 btnEfCadastro.addEventListener('click', function(){
@@ -249,4 +253,6 @@ function CadastroOk() {
     usuario.senha = password;
 }
 import { iniciarBG } from './scriptBD.js';
-export { usuario }; //Exportando para que o objeto usuario possa ser tratado no arquivo ScriptBD (Banco de dados) utilizando a ideia de produção por etapas, pois cada parte é tratada em um arquivo destinado ao mesmo.
+import { efetuarLogin }  from './scriptBD.js';
+export { usuario }; 
+//Exportando para que o objeto usuario possa ser tratado no arquivo ScriptBD (Banco de dados) utilizando a ideia de produção por etapas, pois cada parte é tratada em um arquivo destinado ao mesmo.

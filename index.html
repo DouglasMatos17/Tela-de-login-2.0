@@ -28,35 +28,29 @@
     </div>
     <main>
         <section class="container">
-            <div class="ocultador" id="ocultador">
-
+            <div class="ocultador" id="ocultador"><!-- Esta div serve para fazer a animação de ocultação de das divs cadastro e log -->
                 <div class="containerFundo"></div>
-    
-                    <div class="containerOcul">
-                        <div class="logo">
-                            <img src="imagens/Logo flutuante.png" alt="Beija-Flor(Logo)">
-                        </div>
-                        <div class="conteudo">
-                            <h1>Seja Bem vindo!</h1>
-                            <p>Nos siga em nossas redes sociais para ficar por dentro das novidades.</p>
-                        </div>
+                <div class="containerOcul">
+                    <div class="logo">
+                        <img src="imagens/Logo flutuante.png" alt="Beija-Flor(Logo)">
                     </div>
-                    
+                    <div class="conteudo">
+                        <h1>Seja Bem vindo!</h1>
+                        <p>Nos siga em nossas redes sociais para ficar por dentro das novidades.</p>
+                    </div>
                 </div>
-            </div> <!-- Esta div serve para fazer a animação de ocultação de das divs cadastro e log -->
+            </div> 
             <div class="login" id="loginDiv">
                     <h1>Login</h1>
                     <form>
                         <label for="usuario">Usuario:</label>
-                        <input type="text" placeholder="Nome de usuario">
+                        <input id="userLog" type="text" placeholder="Nome de usuario">
                         <label for="password">Senha:</label>   
-                        <input type="password" placeholder="Digite sua senha">
+                        <input id="passwordLog" type="password" placeholder="Digite sua senha">
                     </form>
-
                     <div class="btnEfLogin">
                         <button id="btnEfLogin">Efetuar Login</button>
                     </div>
-
                     <div class="irCadastro" >
                         <p>Não é cadastrado?</p>
                         <button id="btnIrCadastro">Cadastrar</button>
@@ -67,24 +61,18 @@
                     <form>
                         <label for="usuario">Usuario:</label>
                         <input type="text" id="user" placeholder="Nome de usuario">
-
                         <label for="email">Email:</label>
                         <input type="text" id="email" placeholder="Digite seu email">
-
                         <label for="password">Senha:</label>
                         <input type="password"  id="password" placeholder="Digite sua senha">
-
                         <label for="password">Confirmar senha:</label>
                         <input type="password" id="confirmPassword" placeholder="Confirmar sua senha">
                     </form>
-
                     <div class="btnEfCadastro">
                         <button id="btnEfCadastro" >Cadastrar Usuario</button>
                     </div>
-                    
                     <div id="errorMessage" class="message error-message"></div>
                     <div id="successMessage" class="message success-message"></div>
-                    
                     <div class="irLogin">
                         <p>Já é cadastrado?</p>
                         <button id="btnIrLogin">Fazer Login</button>

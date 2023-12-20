@@ -26,8 +26,53 @@ const usersRef = ref(db, "users");
 //Imports e Exports
 import { usuario } from './script.js';
 export { iniciarBG } // Gatilho para iniciar procedimentos no banco de dados
+export { efetuarLogin } //
 
 let userID
+
+function efetuarLogin() {
+    let userLogin = document.getElementById('userLog').value;
+    let passwordLogin = document.getElementById('passwordLog').value;
+
+    validarlogin(userLogin, passwordLogin)
+        .then(loginBemSucedido => {
+            if (loginBemSucedido) {
+                console.log('Usuário autenticado com sucesso!');
+            } else {
+                console.log('Falha na autenticação. Verifique suas credenciais.');
+            }
+        })
+        .catch(error => {
+            console.error('Erro ao realizar o login:', error.message);
+        });
+}
+
+function validarlogin(login, senha) {
+    return get(usersRef)
+        .then(snapshot => {
+            // Verifica se o login e a senha correspondem a algum usuário
+            let loginBemSucedido = false;
+            snapshot.forEach(childSnapshot => {
+                const userIDBD = childSnapshot.key;
+                const loginBD = childSnapshot.child('name').val();
+                const senhaBD = childSnapshot.child('senha').val();
+
+                // Verifica se loginBD e senhaBD não são null ou undefined antes de comparar
+                if (loginBD && senhaBD && login === loginBD && senha === senhaBD) {
+                    console.log('Login bem-sucedido');
+                    loginBemSucedido = true;
+                }
+            });
+
+            return loginBemSucedido;
+        })
+        .catch(error => {
+            console.error('Erro ao realizar o login:', error.message);
+            return false;
+        });
+}
+
+
 
 function iniciarBG() {
     console.log('Banco de dados iniciado')
