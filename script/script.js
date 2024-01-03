@@ -1,4 +1,4 @@
-// Ao iniciar uma avaciação dos conchecimentos utilizados nesses projeto, atente-se que os comentarios no mesmo e a forma como foi feito serve alem de projeto, mas como catalogo de conhecimento sendo que em muitos casos reviso como pratiguei em meus projetos antigos para aprimorar meur projetos atuais.
+// Ao iniciar uma avaliação dos conchecimentos utilizados nesses projeto, atente-se que os comentarios no mesmo e a forma como foi feito serve alem de projeto, mas como catalogo de conhecimento sendo que em muitos casos reviso como pratiguei em meus projetos antigos para aprimorar meus projetos atuais.
 
 
 //Animações de DOM
@@ -95,17 +95,18 @@ function hideAlert(){
     });
 }
 
+//Função e exibe a div de alerta
 function alertOk(){
     containerA.style.display = 'none'
     containerC.style.display = 'flex'
     alertaDiv.style.display = 'flex'
-    setTimeout(function () {
+    setTimeout(function () { // foi utilizada a opacidade com um micro atraso para que o CSS pude-se fazer a animação
         alertaDiv.style.opacity = '100%'
     }, 10)
 }
 
 
-
+//JS da div de alerta
 let btnHideAlertOK = document.getElementById('btnAlertaOK')
 
 btnHideAlertOK.addEventListener('click', function() {
@@ -149,7 +150,6 @@ let senhaValid = ''
 let senhaConfValid = ''
 
 
-
 let btnEfLogin = document.getElementById('btnEfLogin')
 let btnEfCadastro = document.getElementById('btnEfCadastro')
 
@@ -165,7 +165,7 @@ btnEfCadastro.addEventListener('click', function(){
 })
 
 
-
+// Validação simples de formato do cadastro
 function validateLogin() {
     user = document.getElementById('user').value;
     email = document.getElementById('email').value;
@@ -192,9 +192,11 @@ function validateLogin() {
     }else{
         senhaValid = true
     }    
-    //Essas informações são tratadas pela manipulação de DOM para exibir a mensagem personalizada informando apenas quais são falsas para o usuario. assim podendo rever seu cadastro de forma dinamica sabendo exatamente qual informação esta errada. Tirei esta ideia do meu uso pessoal em outra plataformas onde não me informava onde tinha errado ao cadastrar e quis trazer este recurso para o meu projeto.
+    //Essas informações são tratadas pela manipulação de DOM para exibir a mensagem personalizada informando apenas quais são falsas para o usuario. assim podendo rever seu cadastro de forma dinamica sabendo exatamente qual informação esta errada.
 }
 
+
+// Efetua uma validação na senha e confirmação de senha, para identificar se são iguais.
 function validatePasswordMatch() {
     password = document.getElementById('password').value;
     let confirmPassword = document.getElementById('confirmPassword').value;
@@ -206,7 +208,7 @@ function validatePasswordMatch() {
     }
 }
 
-
+// Exibe informações sobre o cadastro no console para melhor detalhamento dev
 function mensagem(){
     
     if(userValid === false) {
@@ -247,11 +249,13 @@ function verificarErros() {
     }
 }
 
+//Cria as informações do objeto usuario para serem enviadas ao ScriptBG apenas as informações necessarias.
 function CadastroOk() {
     usuario.login = user;
     usuario.email = email;
     usuario.senha = password;
 }
+
 import { iniciarBG } from './scriptBD.js';
 import { efetuarLogin }  from './scriptBD.js';
 export { usuario }; 
