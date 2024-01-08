@@ -124,8 +124,41 @@ function hideAlertOk(){
 }
 
 
+//Função e exibe a div de alerta Login
+function alertLoginOk(loginValidado){
+
+    if (loginValidado) {
+        let containerL = document.getElementById('containerL')
 
 
+        containerL.style.display = 'flex'
+        containerC.style.display = 'none'
+        containerA.style.display = 'none'
+        alertaDiv.style.display = 'flex'
+        setTimeout(function () { // foi utilizada a opacidade com um micro atraso para que o CSS pude-se fazer a animação
+            alertaDiv.style.opacity = '100%'
+        }, 10)
+
+    }
+}
+
+//JS da div de alerta
+let btnHideAlertLoginOK = document.getElementById('btnAlertaLoginOK')
+
+btnHideAlertLoginOK.addEventListener('click', function() {
+    hideAlertLoginOk()
+    console.log('Alerta de OK fechado')
+});
+
+function hideAlertLoginOk(){
+    setTimeout(function () {
+        alertaDiv.style.opacity = '0%'
+    }, 400)
+    containerA.style.display = 'flex'
+    containerC.style.display = 'none'
+    containerL.style.display = 'none'
+    alertaDiv.style.display = 'none'
+}
 
 
 // Validação do Cadastro
@@ -258,5 +291,6 @@ function CadastroOk() {
 
 import { iniciarBG } from './scriptBD.js';
 import { efetuarLogin }  from './scriptBD.js';
+export { alertLoginOk };
 export { usuario }; 
 //Exportando para que o objeto usuario possa ser tratado no arquivo ScriptBD (Banco de dados) utilizando a ideia de produção por etapas, pois cada parte é tratada em um arquivo destinado ao mesmo.

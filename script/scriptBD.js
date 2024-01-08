@@ -24,10 +24,12 @@ const usersRef = ref(db, "users")
 
 //Imports e Exports
 import { usuario } from './script.js'
+import { alertLoginOk } from './script.js'
 export { iniciarBG } // Gatilho para iniciar procedimentos no banco de dados
 export { efetuarLogin } //
 
 let userID
+
 
 function efetuarLogin() {
     let userLogin = document.getElementById('userLog').value
@@ -36,6 +38,7 @@ function efetuarLogin() {
     validarlogin(userLogin, passwordLogin)
         .then(loginBemSucedido => {
             if (loginBemSucedido) {
+                alertLoginOk(true)
                 console.log('Usuário autenticado com sucesso!');
             } else {
                 console.log('Falha na autenticação. Verifique suas credenciais.')
